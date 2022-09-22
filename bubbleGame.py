@@ -33,11 +33,11 @@ class SetUpQuickGame:
 
 #Fonction d'affichage du score
 def showScore(scoreInit, screen, font):
-    score = font.render("Score : " + str(scoreInit.score_value), True, (255, 255, 255))
+    score = font.render("Score : " + str(scoreInit.score_value), True, (0, 0, 0))
     screen.blit(score, (scoreInit.textX, scoreInit.textY))
 
 def ShowLive(numberLive, screen, font): 
-    lives = font.render("X " + str(numberLive), True, (255, 255, 255))
+    lives = font.render("X " + str(numberLive), True, (0, 0, 0))
     screen.blit(lives, (60, 55))
 
 #Fonction d'affichage d'ecran du game over
@@ -90,7 +90,10 @@ def main():
     pygame.display.set_caption('bubble collect')
     font = pygame.font.SysFont('arial', 32)
 
+    bk = pygame.image.load('background_800_800.png').convert_alpha()
+
     live = pygame.image.load('live.png').convert_alpha()
+
 
     player = pygame.image.load('bottlexs.png').convert_alpha()
     playerRect = player.get_rect(topleft = (SetUpPlayerInit.SetupplayerX, SetUpPlayerInit.SetupplayerY))
@@ -99,6 +102,7 @@ def main():
 
     while True : 
         screen.fill((0,0,0))
+        screen.blit(bk, (int(0), int(0)))
         screen.blit(player,(int(playerRect.x), int(playerRect.y)))
         screen.blit(tapioca,(int(tapiocaRect.x), int(tapiocaRect.y)))
         screen.blit(live,(int(LiveInit.LiveX), int(LiveInit.LiveY)))
